@@ -2,13 +2,13 @@ function checkBranch() {
     chrome.storage.sync.get(({ branchesList: [] }), (data) => {  
         const targetBranch = document.querySelector("span.commit-ref span.css-truncate-target").innerText;
         if (data.branchesList.includes(targetBranch)) {
-            const selectItem = document.querySelector("button.js-merge-box-button-squash");
-            const mergeButton = document.querySelector("button.btn-group-squash");
+            const squashButton = document.querySelector("button.btn-group-squash");
+            const autoSquashSelectItem = document.querySelector("button.select-menu-item[value='squash']")
+            const squashSelectItem = document.querySelector("button.js-merge-box-button-squash");
 
-            if (selectItem && mergeButton) {
-                selectItem.disabled = true;
-                mergeButton.disabled = true;
-            }
+            if (squashButton) squashButton.disabled = true;
+            if (autoSquashSelectItem) autoSquashSelectItem.disabled = true;
+            if (squashSelectItem) squashSelectItem.disabled = true;
         }    
     });
 }
